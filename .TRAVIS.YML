@@ -1,7 +1,24 @@
 language: rust
+os:
+  - linux
+  - osx
+  - windows
+
+rust:
+  - stable
+  - beta
+  - nightly
+
+jobs:
+  allow_failures:
+    - rust: nightly
+  fast_finish: true
+
+cache: cargo
+
+before_cache:
+  - rm -rf "$TRAVIS_HOME/.cargo/registry/src"
+
 script:
   - cargo build --verbose --workspace
-os:
-- linux
-- osx
-- windows
+  - cargo test --verbose --workspace
