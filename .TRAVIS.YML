@@ -1,0 +1,7 @@
+language: rust
+script:
+  - cargo build --verbose --workspace
+os:
+- linux
+- osx
+- windows
